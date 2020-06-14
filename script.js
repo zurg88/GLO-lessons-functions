@@ -6,7 +6,7 @@ function getUserNumber() {
 	if(isNaN(userNumber) || userNumber === "") {
 		getUserNumber();
 	} else {
-		return userNumber;
+		return +userNumber;
 	}
 
 }
@@ -16,9 +16,11 @@ function getRandomNumber(min, max) {
 	return Math.round(randomNum);
 }
 
-function getWiner(userNum, ranNum) {
-
-	 function result() {
+function getWiner(ranNum) {
+	console.log(ranNum);
+	 function result(ranNum) {
+		let userNum = getUserNumber();
+		console.log(userNum);
 		if(userNum === null || userNum === undefined){
 			alert('Игра окончена');
 		} else if(userNum === ranNum) {
@@ -26,12 +28,12 @@ function getWiner(userNum, ranNum) {
 		} else if(userNum < ranNum) {
 			alert('Загаданное число больше');
 		}  else {
-			alert('Загаданное число меньше"');
+			alert('Загаданное число меньше');
 		}
 	}
-	result();
+	result(ranNum);
 	
 }
 
-getWiner(getUserNumber(), getRandomNumber(1, 100));
+getWiner( getRandomNumber(1, 100));
 
