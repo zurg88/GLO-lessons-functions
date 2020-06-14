@@ -6,29 +6,36 @@ function getUserNumber() {
 	if(isNaN(userNumber) || userNumber === "") {
 		getUserNumber();
 	} else {
-		return +userNumber;
+		return userNumber;
 	}
 
 }
 
 function getRandomNumber(min, max) {
 	let randomNum = min - 0.5 + Math.random() * (max - min + 1);
+	console.log(Math.round(randomNum));
 	return Math.round(randomNum);
 }
 
 function getWiner(ranNum) {
-	console.log(ranNum);
+
 	 function result(ranNum) {
 		let userNum = getUserNumber();
-		console.log(userNum);
-		if(userNum === null || userNum === undefined){
+		console.log(typeof(userNum));
+		
+		  if(userNum === null || userNum === undefined) {
 			alert('Игра окончена');
-		} else if(userNum === ranNum) {
-			alert('Вы победитель!');
-		} else if(userNum < ranNum) {
-			alert('Загаданное число больше');
-		}  else {
-			alert('Загаданное число меньше');
+		} else {
+			userNum = +userNum;
+			if(userNum === ranNum){
+				alert('Вы победитель!');
+			} else if(userNum < ranNum) {
+				alert('Загаданное число больше');
+				result(ranNum);
+			}  else {
+				alert('Загаданное число меньше');
+				result(ranNum); 
+			}
 		}
 	}
 	result(ranNum);
